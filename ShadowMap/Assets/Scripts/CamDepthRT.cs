@@ -50,4 +50,11 @@ public class CamDepthRT : MonoBehaviour
         Matrix4x4 projection = GL.GetGPUProjectionMatrix(depthCam.projectionMatrix, false);
         return uv * projection * worldToView;
     }
+
+    Matrix4x4 GetLightWorldSpaceDir()
+    {
+        Matrix4x4 mat = new Matrix4x4();
+        mat.SetTRS(depthCam.transform.position, depthCam.transform.rotation, depthCam.transform.lossyScale);
+        return mat;
+    }
 }
